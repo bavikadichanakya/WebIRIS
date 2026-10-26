@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "model": {
+    "model_path": "models/smollm3/smol-Q4_K_M.gguf",
+    "backend": "auto",
+    "context_length": 2048,
+    "max_output_tokens": 512,
+    "temperature": 0.2,
+    "n_threads": 4,
+    "n_gpu_layers": 0,
+    "system_prompt": "You are IRIS, an intelligent, concise, and helpful Windows desktop voice assistant. You control the user's computer via permitted actions. Always output valid JSON."
+  },
+  "wake_word": {
+    "model_path": "models/wakeword/hey_iris.onnx",
+    "melspec_path": "models/wakeword/melspectrogram.onnx",
+    "embedding_path": "models/wakeword/embedding_model.onnx",
+    "threshold": 0.5,
+    "sample_rate": 16000,
+    "chunk_size": 1280,
+    "sensitivity": 0.5,
+    "cooldown_seconds": 1.5,
+    "enabled": true
+  },
+  "stt": {
+    "backend": "faster_whisper",
+    "model_size": "tiny.en",
+    "language": "en",
+    "device": "cpu",
+    "compute_type": "int8",
+    "silence_threshold_seconds": 1.2,
+    "max_record_seconds": 10.0
+  },
+  "tts": {
+    "backend": "sapi5",
+    "voice_id": "",
+    "rate": 180,
+    "volume": 1.0,
+    "piper_model_path": "",
+    "piper_config_path": ""
+  },
+  "automation": {
+    "allowed_applications": {
+      "notepad": "notepad.exe",
+      "calculator": "calc.exe",
+      "file explorer": "explorer.exe",
+      "browser": "msedge.exe",
+      "edge": "msedge.exe",
+      "chrome": "chrome.exe",
+      "code": "code.exe",
+      "terminal": "wt.exe",
+      "cmd": "cmd.exe",
+      "powershell": "powershell.exe",
+      "task manager": "taskmgr.exe"
+    },
+    "typing_delay_ms": 15,
+    "allow_submit_on_request": true,
+    "block_password_fields": true
+  },
+  "security": {
+    "require_confirmation_for_destructive": true,
+    "require_confirmation_for_submission": true,
+    "tool_permissions": {
+      "open_application": "allow",
+      "focus_window": "allow",
+      "switch_window": "allow",
+      "type_text": "allow",
+      "submit_text": "confirm",
+      "read_ui_element": "allow",
+      "ask_clarification": "allow",
+      "answer_question": "allow"
+    },
+    "log_audio": false,
+    "log_transcripts": false
+  },
+  "ui": {
+    "start_minimized": false,
+    "close_to_tray": true,
+    "dark_mode": true,
+    "window_width": 960,
+    "window_height": 680
+  }
+}
